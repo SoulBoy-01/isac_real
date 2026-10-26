@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>答辩追问整理（修订版）：γ 的定位、p 的实测、libfec 替换与创新点</title>
+<style>
+body{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;max-width:880px;margin:40px auto;padding:0 20px;line-height:1.75;color:#1a1a1a;background:#fafafa}
+h1{font-size:1.55em;border-bottom:3px solid #2c3e50;padding-bottom:10px}
+h2{font-size:1.2em;margin-top:2.2em;color:#2c3e50;border-left:5px solid #3498db;padding-left:12px}
+h3{font-size:1.02em;margin-top:1.4em;color:#34495e}
+.qa-block{background:#fff;border-radius:8px;padding:4px 24px 16px 24px;margin:20px 0;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.question{font-weight:600;color:#1a5490;margin-bottom:6px}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:.94em}
+th,td{border:1px solid #d5d5d5;padding:7px 11px;text-align:left}
+th{background:#eef3f8;font-weight:600}
+.highlight{background:#fff8e1;border-left:4px solid #f5a623;padding:10px 16px;margin:14px 0;border-radius:0 6px 6px 0}
+.warn{background:#fdecea;border-left:4px solid #c0392b;padding:10px 16px;margin:14px 0;border-radius:0 6px 6px 0}
+.ok{background:#eaf5ea;border-left:4px solid #2e7d32;padding:10px 16px;margin:14px 0;border-radius:0 6px 6px 0}
+code{background:#f0f0f0;padding:2px 6px;border-radius:4px;font-size:.92em}
+pre{background:#2d2d2d;color:#f0f0f0;padding:14px 18px;border-radius:6px;overflow-x:auto;font-size:.88em;line-height:1.55}
+pre code{background:transparent;color:inherit;padding:0}
+.url{word-break:break-all;font-family:monospace;background:#eef7ee;padding:6px 10px;border-radius:4px;display:inline-block;margin:4px 0}
+.footer{margin-top:60px;padding-top:20px;border-top:1px solid #ddd;font-size:.86em;color:#777}
+</style>
+</head>
+<body>
+
+<h1>答辩追问整理（修订版）</h1>
+<p>本版修正了上一版中三处技术错误：LDPC 块的计算口径、libfec 的参数示例、以及"RS 没起作用所以链路能跑"这一与实测冲突的表述。并补入两节：γ 因子的定位（复用还是创新）、p 的实测方法。</p>
+
+<!-- ============================================================ -->
+<div class="qa-block">
+<h2>1. libfec 是什么</h2>
+<p class="question">提问：材料里说的 libfec 是什么？</p>
+<div class="answer">
+<p><strong>libfec</strong> 是 Phil Karn（呼号 KA9Q）编写的一套成熟、开源的<strong>前向纠错函数库</strong>，以 LGPL 发布。它包含 Reed-Solomon 编解码、卷积码/Viterbi 译码等经典算法，在业余无线电、DVB 与 CCSDS 地面段里被长期使用。</p>
+<p>"替换为成熟实现"指的是：放弃自己手写的 RS 编解码，直接调用 libfec 中经过长期验证的函数。这是标准的工程补救——承认实现层有缺陷，但算法本身是标准的，换库即可消除实现风险。</p>
+<div class="ok"><strong>答辩口径：</strong>"外码算法采用标准 RS(255,K)，实现层改用 libfec；这消除了自研实现的验证风险，也把参数改成运行期可配置，为激活点扫描提供了便利。"</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="qa-block">
+<h2>2. γ 因子是复用还是创新</h2>
+<p class="question">提问：γ 的建模是复用的，只是首次在 ISAC 的通信视频链路上引用，对吗？</p>
+<div class="answer">
+<p><strong>对，这个判断是准确的。</strong>必须分成两层说，否则会过度声明：</p>
+
+<table>
+<tr><th>层面</th><th>是否新颖</th><th>依据</th></tr>
+<tr><td>"封装格式在误码下会放大故障"这一<strong>现象</strong></td><td><strong>不新</strong></td><td>DVB-H / MPE-FEC 时代已有定量分析；MPEG-TS 的同步字节与连续性计数器脆弱性是公开知识</td></tr>
+<tr><td>头部暴露比 28:4 → γ₀≈7 这一<strong>量级估算</strong></td><td><strong>不新</strong></td><td>本质是"关键字节数之比"，属工程常识的定量表达</td></tr>
+<tr><td>在<strong>同一物理误码流</strong>下，对四种容器/解码器栈做<strong>端到端横向实测</strong></td><td><strong>较新</strong></td><td>公开文献中，ISAC 链路上没有同类测量</td></tr>
+<tr><td>把 γ 用作<strong>设计判据</strong>（容器/解码器选择优先于外码强度）</td><td><strong>较新</strong></td><td>结论反直觉，且可操作</td></tr>
+</table>
+
+<div class="highlight">
+<strong>准确的表述：</strong>"容器误码放大这一现象在广播与流媒体领域已有研究；本工作的贡献不是提出该现象，而是<strong>把它引入 ISAC 实时视频链路，并给出同一误码源下的四栈实测与设计判据</strong>。"
+</div>
+
+<div class="warn">
+<strong>不要说的两句话：</strong><br>
+① "首次提出容器放大因子"——会被立刻反驳；<br>
+② "模型预测 7、实测 4–500，验证了模型"——4 到 500 跨两个数量级，不构成验证，只能称"量级一致"。
+</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="qa-block">
+<h2>3. p 怎么实测</h2>
+<p class="question">提问：γ = P_data_loss / p 里的 p，具体怎么测？</p>
+<div class="answer">
+<p><strong>先明确 p 的定义</strong>：容器输入端（即 <strong>LDPC 译码输出、RS 译码之前</strong>）的字节错误率。这个位置决定了测法——不能在 UDP 出口测，因为那里已经过了 RS。</p>
+
+<h3>方法 A（推荐）：在 LDPC 输出处打点</h3>
+<ol>
+<li><strong>发端</strong>用 PRBS 生成载荷：种子固定、按包序号可重建，纯随机字节（不要用 0xA5 填充，也不要混入序号头）。</li>
+<li><strong>收端</strong>在解调器里、<code>decode_frame()</code> 返回之后、<code>RS decode</code> 之前，用同一 PRBS 重建期望字节，<strong>逐字节比对</strong>。</li>
+<li>统计：<code>p = 失配字节数 / 比对字节总数</code>。</li>
+</ol>
+<p>好处：直接得到进容器之前的 p，与是否启用外码无关。</p>
+
+<h3>方法 B（不改代码）：关外码 + PRBS 在 UDP 接口比对</h3>
+<p>关掉 RS 后用 PRBS 载荷，在 UDP 出口逐字节比对。前提是<strong>同一 SNR、同一调制</strong>——因为 p 只由 SNR 与内码决定，不随外码变化。可行，但必须说明"p 在无外码条件下测得，同 SNR 下与外码无关"。</p>
+
+<h3>统计要求（这一点常被忽略）</h3>
+<table>
+<tr><th>目标相对误差</th><th>需要的错误事件数 N·p</th><th>p=10⁻⁴ 时需比对字节数</th></tr>
+<tr><td>±30%</td><td>≈11</td><td>≈1.1×10⁵</td></tr>
+<tr><td>±10%</td><td>≈100</td><td>≈10⁶</td></tr>
+<tr><td>±3%</td><td>≈1100</td><td>≈1.1×10⁷</td></tr>
+</table>
+<p>95% 置信区间：<code>p ± 1.96·√(p(1−p)/N)</code>。给 γ 报数时，p 必须带区间；否则"γ=500"这个数没有误差棒。</p>
+
+<h3>P_data_loss 也要定义清楚</h3>
+<p>建议用<strong>坏帧率</strong>：<code>1 − 可用帧占比</code>，其中"可用帧"用 VMAF/PSNR 阈值或人工标注判定。不要用"可用播放百分比"这种主观量——评审会问判定规则。</p>
+
+<div class="ok"><strong>答辩口径：</strong>"p 在 LDPC 译码输出处用 PRBS 逐字节比对测得，样本量约 10⁶ 字节，给出 95% 置信区间；P_data_loss 用坏帧率度量。γ 是这两者的比值，绝对倍数依赖 p 的实测精度，而跨栈的相对差异（125 倍）对 p 的系统误差不敏感。"</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="qa-block">
+<h2>4. GStreamer 实测 4×，和模型 7× 不接近吗</h2>
+<p class="question">提问：实际用的就是 GStreamer，不是和模型接近吗？为什么说"差两个数量级"？</p>
+<div class="answer">
+<p><strong>你的理解是对的。</strong>裸流 + GStreamer ≈4×，与模型 γ₀=7 只差 1.75 倍，属于同一量级。"跨两个数量级"指的是<strong>四种栈之间的横向差异</strong>（4× 到 500×）。</p>
+<div class="highlight">
+<strong>答辩口径：</strong>"我们实际部署的是 GStreamer 裸流栈，实测约 4×，与模型 γ₀=7 在同一量级，这支持了量级估算的合理性。材料中'跨两个数量级'指四栈横向对比，说明 γ 高度依赖实现栈，不能当作跨栈通用常数。"
+</div>
+<p>补一句更稳的：<strong>"γ 的绝对值依赖 p 的实测，但跨栈的相对差异与 p 无关。"</strong> 这句话能同时挡住"模型没验证"和"p 没测"两个追问。</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="qa-block">
+<h2>5. H.264 的 I/P/B 帧与"持续到下一个 I 帧"</h2>
+<p class="question">提问：错误持续到下一个 I 帧，和 P 帧有关系吗？这些帧分别是什么？</p>
+<div class="answer">
+<table>
+<tr><th>帧类型</th><th>编码方式</th><th>参考谁</th><th>被谁参考</th></tr>
+<tr><td><strong>I 帧</strong></td><td>帧内编码，不参考任何帧</td><td>无</td><td>P 帧、B 帧</td></tr>
+<tr><td><strong>P 帧</strong></td><td>前向预测，只编码与参考帧的差异</td><td>前面的 I 或 P 帧</td><td>后面的 P、B 帧</td></tr>
+<tr><td><strong>B 帧</strong></td><td>双向预测</td><td>前后 I/P 帧</td><td>一般不作为参考（非参考 B 帧）</td></tr>
+</table>
+<p><strong>P 帧正是错误传播的载体</strong>：一个 P 帧的参考链断了，它自己解不出来，后面所有直接或间接参考它的帧跟着坏，直到下一个不依赖前帧的 I 帧出现，参考链才归零。GOP=30 @ 20 fps → 最长约 <strong>1.5 秒</strong>。</p>
+<div class="warn"><strong>要补一句（这是你们的特殊性）：</strong>"我们的失效不止是单帧坏，而是<strong>字节流级失步</strong>——前缀错导致后续包边界全错，此时连'I 帧在哪'都解析不出来，恢复要等流重新对齐。"</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="qa-block">
+<h2>6. LDPC 块 63 B 与实际占用（本版修正）</h2>
+<p class="question">提问：63B 是固定值吗？B 是 bit 还是 byte？占用怎么算？</p>
+<div class="answer">
+<p><strong>B 是 Byte。</strong> 但上一版说"63 字节是系统选定的处理单位"是<strong>不准确的</strong>——它不是随便选的：</p>
+<div class="highlight">
+63 B = 504 bit ÷ 8 = <strong>LDPC(1008,504) 的信息位长度</strong>。内码定成 (1008,504)，信息块就必然是 63 字节，没有选择余地。
+</div>
+
+<h3>占用要分两个口径</h3>
+<table>
+<tr><th>K</th><th>RS 块数</th><th>RS 后字节</th><th>LDPC 块数 (⌈/63⌉)</th><th>信息字节</th><th><strong>空口字节</strong>（码率 1/2，×126）</th></tr>
+<tr><td>223</td><td>5</td><td>1275</td><td>21</td><td>1323</td><td><strong>2646</strong></td></tr>
+<tr><td>191</td><td>6</td><td>1530</td><td>25</td><td>1575</td><td><strong>3150</strong></td></tr>
+</table>
+<p>比值 3150/2646 = <strong>1.19</strong>，即 K=191 比 K=223 多占约 <strong>19%</strong> 空口时间。两种口径比值相同，但<strong>别说"空口占用 1323 B"</strong>——那是信息字节，空口要乘 2。</p>
+<div class="warn">上一版把 1323 B 说成"空口占用"，被懂行的评审一算就穿帮。</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="qa-block">
+<h2>7. RS 外码的真实作用（本版重写）</h2>
+<p class="question">提问：既然 RS 没在纠错，实时视频为什么能跑？是不是内码够强 + 环境稳态？</p>
+<div class="answer">
+<p><strong>这个说法只对了一半，而且漏掉了一个你自己的实验事实。</strong></p>
+<p>事实是：<strong>不加 RS 外码，稳态下实时视频不可用。</strong> 所以"RS 没起作用所以链路能跑"这个推理链是断的。</p>
+<p>正确的拆解是把 <strong>纠错</strong> 和 <strong>分帧</strong> 分开：</p>
+<ol>
+<li><strong>纠错没生效</strong>：译码器因实现缺陷永远判"无错"，从未纠正过任何字节——这部分结论已撤回。</li>
+<li><strong>分帧在起作用</strong>：2 字节长度前缀位于 RS 码字内部。去掉外码，前缀裸露，一处比特错误就让长度字段错、整条字节流错位——视频不是"画质变差"，而是"无法解析"。</li>
+<li><strong>内码是第一道防线</strong>：LDPC 把误码压到容器与解码器能带伤工作的水平；GStreamer 的容错行为比 VLC 好得多。</li>
+</ol>
+<div class="highlight">
+<strong>一句话口径：</strong>"RS 有用，但不是以纠错的方式有用——它以码字边界守住了分帧。"
+</div>
+<div class="warn"><strong>不要说的：</strong>"RS 没起作用所以链路能跑"——这句会被"那拿掉 RS 为什么崩"一句问死。</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="qa-block">
+<h2>8. 换成 libfec 之后，创新点还够吗</h2>
+<p class="question">提问：自研 RS 换成 libfec，论文创新点会不会不够？目标中文核心。</p>
+<div class="answer">
+<p><strong>先说结论：换库不损失创新点，因为"自己写 RS 编解码"本来就不该算创新点。</strong> 那是教科书算法，写出来只证明编码能力，不证明研究贡献。换库反而去掉了一个会被攻击的面。</p>
+
+<h3>创新点应该这样排</h3>
+<table>
+<tr><th>层次</th><th>内容</th><th>强度</th><th>对应章节</th></tr>
+<tr><td>场景</td><td>ISAC 链路上跑<strong>连续媒体业务</strong>，此前无人系统测量</td><td>中</td><td>绪论 / 第 1 章</td></tr>
+<tr><td>方法</td><td>逐层可观测测量 + <strong>同一误码源</strong>下的栈间对照</td><td>中</td><td>第 2 章</td></tr>
+<tr><td>发现</td><td>容器/解码器放大 ≫ 外码强度；<strong>外码守分帧</strong></td><td><strong>较强</strong>（反直觉）</td><td>第 3–4 章</td></tr>
+<tr><td>工程</td><td>平台改造：多阶 QAM、级联链、视频贯通、队列整形</td><td>弱—中</td><td>第 2、5 章</td></tr>
+</table>
+
+<h3>对"中文核心"够不够</h3>
+<p>要分期刊层次看：</p>
+<ul>
+<li><strong>EI 中文刊</strong>（通信学报、电子与信息学报）：要求理论与方法增量，单靠"我们测了 γ"偏薄，需要激活点曲线 + 共存实验撑起来。</li>
+<li><strong>北大核心 / 科技核心</strong>（电讯技术、无线电工程、计算机工程、电视技术等）：<strong>真实平台 + 完整实验 + 清晰结论就够</strong>，你现在的工作量是够的。</li>
+</ul>
+
+<div class="highlight">
+<strong>但要补两样东西，否则会被当成"测量报告"：</strong><br>
+① 一个<strong>可复用判据</strong>——给定残余误码 p 与可接受坏帧率，如何选容器与解码器；<br>
+② 一条<strong>定量边界</strong>——γ 随栈、码率、误码形态怎么变（一张表或一条曲线即可）。
+</div>
+
+<h3>表述模板（中文核心常用三段式）</h3>
+<pre><code>针对 ISAC 链路上实时视频业务的可靠传输问题，
+提出/构建了 基于容器放大因子 γ 的跨层选型判据，
+并在 OpenISAC 平台上完成了四栈实测。
+实验表明：容器与解码器的选择对视频可用性的影响，
+显著大于外码强度的调整。</code></pre>
+
+<div class="warn"><strong>论文里必须改掉的表述：</strong>把"自主设计并实现了 GF(2⁸) 系统式 RS 编解码器"改为"在开源平台上搭建了 RS–LDPC 级联编码链路，外码采用成熟 FEC 库实现，重点在于链路的可观测改造与参数扫描"。</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="qa-block">
+<h2>9. 在 Ubuntu 22.04 上集成 libfec（参数已修正）</h2>
+<p class="question">提问：部署平台是 Ubuntu 22.04，怎么集成？</p>
+<div class="answer">
+
+<div class="warn">
+<strong>上一版的参数是错的：</strong><code>init_rs_char(8, 0x187, 112, 11, 32, 0)</code> 对应的是 <strong>CCSDS 标准 RS 码</strong>（本原多项式 0x187、首根 112、间隔 11），和你报告里写的 <strong>0x11D、根从 α⁰ 起、间隔 1</strong> 不是同一个码，互相译不了。
+</div>
+
+<h3>你的正确参数</h3>
+<pre><code>// RS(255,223)，GF(2^8)，本原多项式 0x11D，根 α^0..α^31
+void *rs = init_rs_char(8,      // symsize
+                        0x11D,  // gfpoly：与报告一致
+                        0,      // fcr：首根 α^0
+                        1,      // prim：间隔 1
+                        32,     // nroots：t=16
+                        0);     // pad：完整码</code></pre>
+
+<p><strong>关于兼容性</strong>：收发两端是<strong>同时替换</strong>的，新旧实现之间不需要互通，只要两端参数一致即可。所以"必须与旧 0x11D 兼容"这个约束并不成立——除非你要和旧采集数据对齐。</p>
+
+<h3>换 libfec 的一个实际收益</h3>
+<p><code>nroots</code> 是<strong>运行期参数</strong>。要扫描 t=1/2/8/16 的激活点，只需改这一个数，<strong>不用改编译期常量重编译</strong>——这正是激活点实验最需要的能力。</p>
+<table>
+<tr><th>目标码</th><th>nroots</th><th>t</th><th>冗余</th></tr>
+<tr><td>RS(255,253)</td><td>2</td><td>1</td><td>0.8%</td></tr>
+<tr><td>RS(255,251)</td><td>4</td><td>2</td><td>1.6%</td></tr>
+<tr><td>RS(255,239)</td><td>16</td><td>8</td><td>6.3%</td></tr>
+<tr><td>RS(255,223)</td><td>32</td><td>16</td><td>14.3%</td></tr>
+</table>
+
+<h3>安装与链接</h3>
+<pre><code># 先确认包名（答辩前务必在你机器上跑一次）
+apt-cache search libfec
+
+# 有 dev 包则直接装
+sudo apt install libfec-dev
+
+# 编译时链接（库要放在源文件之后）
+gcc your_program.c -o your_program -lfec</code></pre>
+<p>若走源码：<code>git clone https://github.com/quiet/libfec.git &amp;&amp; cd libfec &amp;&amp; mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make &amp;&amp; sudo make install</code>，默认装到 <code>/usr/local</code>。</p>
+
+<h3>调用骨架与自检</h3>
+<pre><code>unsigned char block[255];
+// 前 223 字节填数据，后 32 字节留给校验
+encode_rs_char(rs, block, &amp;block[223]);
+
+int nerr = decode_rs_char(rs, block, NULL, 0);
+// nerr &gt;= 0：纠正的符号数；nerr &lt; 0：不可纠
+
+// 自检：注入 0..16 个错误，必须全部还原且 nerr 等于注入数；
+// 注入 17 个，必须返回 -1。</code></pre>
+
+<div class="ok"><strong>答辩口径：</strong>"在 Ubuntu 22.04 上优先用发行版 libfec 包做快速替换与单元验证；替换后收发两端使用同一组 GF 参数（0x11D、fcr=0、prim=1），并用注入错误的自检确认 0–16 个错误可纠、17 个报不可纠。"</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="qa-block">
+<h2>10. libfec 仓库地址</h2>
+<p>原始代码由 Phil Karn 发布在 <code>http://www.ka9q.net/code/fec/</code>，该站可能不稳定。GitHub 上常用镜像：</p>
+<span class="url">https://github.com/quiet/libfec</span><br>
+<span class="url">https://github.com/fblomqvi/libfec</span><br>
+<span class="url">https://github.com/zleffke/libfec</span><br>
+<span class="url">https://github.com/Opendigitalradio/ka9q-fec</span>
+<p>推荐 <code>quiet/libfec</code>（带 CMake 构建）。<strong>地址未在本机验证</strong>，clone 前先在浏览器打开确认一次。</p>
+</div>
+
+<div class="footer">
+<p>修订要点：修正 LDPC 占用口径（信息字节 vs 空口字节）、修正 libfec 参数（0x11D/0/1）、重写"RS 的实际作用"（纠错未生效但守住分帧），新增 γ 的定位与 p 的实测方法。</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+OK  [ 1] ITU-R      -> ITU-R. Framework and overall objectives of the future deve
+BAD [ 2] Wiegand    -> WIEGAND T, SULLIVAN G J, BJØNTEGAARD G, LUTHRA A. Overview
+OK  [ 3] ISO/IEC    -> ISO/IEC. Information technology — Generic coding of moving
+OK  [ 4] STURM      -> STURM C, WIESBECK W. Waveform design and signal processing
+OK  [ 5] LIU F      -> LI X, CUI Y, ZHANG J A, LIU F, ZHANG D, HANZO L. Integrate
+OK  [ 6] WEI Z      -> WEI Z, QU H, WANG Y, et al. Integrated sensing and communi
+OK  [ 7] KAUSHIK    -> KAUSHIK A, SINGH R, DAYARATHNA S, et al. Toward integrated
+OK  [ 8] 徐金雷        -> 徐金雷, 赵俊湦, 卢华兵, 蒋旭, 赵楠. 面向6G的多维扩展通感一体化研究综述[J]. 电子与信息学报, 202
+OK  [ 9] 尉志青        -> 尉志青, 冯志勇, 李怡恒, 等. 太赫兹通信感知一体化波形：现状与展望[J]. 通信学报, 2022, 43(1)
+OK  [10] BRUNNER    -> BRUNNER D, GIROTO DE OLIVEIRA L, MUTH C, et al. Bistatic O
+OK  [11] ZHOU Z     -> ZHOU Z, ZHANG C, XU X, ZENG Y. OpenISAC: An open-source re
+OK  [12] RAHMAN     -> RAHMAN M L, ZHANG J A, HUANG X, GUO Y J, HEATH R W. Framew
+OK  [13] IMMICH     -> IMMICH R, CERQUEIRA E, CURADO M. Mechanisms for resilient 
+OK  [14] XU X       -> ZHOU Z, ZHANG C, XU X, ZENG Y. OpenISAC: An open-source re
+OK  [15] ALAOUI     -> ALAOUI-FDILI O, CORLAY P, FAKHRI Y, COUDOUX F-X, ABOUTAJDI
+OK  [16] NISHAT     -> NISHAT K, GNAWALI O, ABDELHADI A. Adaptive bitrate video s
+OK  [17] TRAN       -> TRAN THAI T, LACAN J, LOCHIN E. Joint on-the-fly network c
+OK  [18] TUNG       -> TUNG T-Y, GÜNDÜZ D. DeepWiVe: Deep-learning-aided wireless
+OK  [19] LIN S      -> LIN S, COSTELLO D J. Error control coding[M]. 2nd ed. Uppe
+OK  [20] EDER       -> EDER Y, ELDAR Y C. Sparsity-based multi-person non-contact
+OK  [21] ZHANG B    -> ZHANG B, JIANG B, ZHENG R, ZHANG X, LI J, XU Q. Pi-ViMo: P
+OK  [22] HSIEH      -> HSIEH C-H, TSAI T-L, TSENG P-H. Harmonic MUSIC method for 
+OK  [23] 屈乐乐        -> 屈乐乐, 刘淑杰, 杨天虹, 孙延鹏. 基于多通道的调频连续波雷达生命信号提取[J]. 电子与信息学报, 2022,
+OK  [24] 金添         -> 金添, 何元, 李新羽, 宋永坤, 杨阳. 超宽带雷达人体行为感知研究进展[J]. 电子与信息学报, 2022, 4
+OK  [25] 陈小龙        -> 陈小龙, 关键, 何友. 微多普勒理论在海面目标检测中的应用及展望[J]. 雷达学报, 2013, 2(1): 12
+OK  [26] LI X       -> LI X, CUI Y, ZHANG J A, LIU F, ZHANG D, HANZO L. Integrate
+OK  [27] CASSAGNE   -> CASSAGNE A, HARTMANN O, LÉONARDON M, et al. AFF3CT: A fast
+
+语义抽查全部通过: False

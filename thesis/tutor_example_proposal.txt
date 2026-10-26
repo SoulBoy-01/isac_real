@@ -1,0 +1,356 @@
+=== 正文 ===
+附件二：
+上海海事大学
+学术学位硕士学位论文开题报告
+论文题目：基于空-频特征混洗引导的SAR舰船小目标检测网络研究
+姓名：
+翟近乐
+学号：
+202230310004
+学科专业：
+信息与通信工程
+指导教师：
+徐志京
+入学日期：
+2022.10.30
+报告日期：
+报告地点：
+研究生院制表
+说  明
+学位论文开题报告是硕士研究生课程学习结束后开展学位论文工作的基本要求，是保证学位论文质量、工作进度和研究生培养质量的首要环节。
+一、报告内容：
+（1）考查硕士生对本学科专业的基础理论与专业知识的掌握程度、课程学习情况等；
+（2）论文工作准备情况，包括论文选题、文献阅读、研究内容、研究方法和技术路线、工作难度、研究基础、写作能力和答辩表达能力等；参与学术活动情况等。
+二、报告撰写：开题报告正文字数不少于6000字；参考文献数量不少于20篇（其中外文资料不少于二分之一，马克思主义理论学科外文资料不少于四分之一。），近5年文献不少于三分之一；正文及参考文献等撰写要求参见《上海海事大学学位论文格式规范》。
+三、报告保存：研究生应根据答辩会上的专家意见修改完善开题报告或中期报告，经导师审核、签字后，保存为PDF文档格式，上传到研究生信息管理系统。
+学位论文开题报告正文
+撰写大纲：
+课程学习情况（附成绩单）、参加科研和学术活动等情况；
+学位论文研究背景、目的和意义；
+国内外研究现状及发展动态分析；
+主要研究内容、研究目标、拟解决的关键问题；
+学位论文的研究方法、技术路线、试验手段、关键技术等论述；
+年度研究计划；
+现有的研究基础；
+现有研究条件及可能遇到的困难和问题分析。
+参考文献（不占字数）。
+学位论文的研究背景、目的和意义
+21世纪是海洋的世纪。党的十八大提出了“建设海洋强国”的战略目标，要求提高洋资源开发能力，发展海洋经济，保护海洋生态环境，坚决维护国家海洋权益。而舰船作为海洋运输的重要载具，对于舰船的监测具有重要意义。在军事领域，舰船作为海上军事力量的主要代表，其目标检测技术对于军事侦察、安全防御以及战略决策具有重要意义。自动化和高效的舰船目标检测能够提高海军的情报获取和分析效率，加强国防安全。在商用领域，航运、港口管理、海洋勘探、渔业等领域需要准确检测海洋中的舰船，以优化资源分配和管理。随着全球贸易的不断发展，航运业的快速增长导致海上交通密度增加，因而需要高效的舰船目标检测系统来确保船舶间的安全距离，避免碰撞和事故发生。因此，舰船的精准检测具有重要的现实意义。
+随着遥感影像技术的不断发展，遥感图像在海洋监测、城市规划、资源勘探与军事国防等领域发挥着重要作用[1]，其中舰船目标检测任务是最具有研究性[2]、实用性和代表性的一个分支。遥感舰船图像主要包括可见光遥感图像、红外图像和合成孔径雷达(Synthetic Aperture Radar, SAR)图像。可见光遥感图像的像素信息较为丰富，但成像过程易受光照条件、季节变化等因素影响。红外图像由于其低信噪比和有限的结构信息，不利于舰船目标的检测。因此，以上两种图像不适用于光照较低、高云覆盖以及地表温差较小的场景监测。相反，SAR图像因其全天时、全天候[3]的特点，被广泛应用于实时港口检测、军事目标识别及追踪。而大宽幅SAR图像中的舰船小目标检测则是舰船目标检测中亟待解决的重点和难点。
+SAR舰船小目标检测中出现的问题主要可以归结为漏检和误检两个部分，如图1所示，即使是最先进的Segment Anything[4]也无法避免漏检和误检问题。造成漏检和误检问题的原因主要可归结为以下几个部分：
+SAR在成像过程中受到海杂波等环境因素的影响会产生引起SAR图像质量退化的乘性斑点噪声和细节模糊[5]。一方面，斑点噪声与舰船小目标在尺寸上的相似性可能导致SAR舰船小目标的误检。另一方面，海杂波与旁瓣的出现会造成舰船小目标的漏检[6]。此外，舰船小目标的移动会产生不同程度的几何失真，易发生SAR舰船小目标的漏检。
+在近岸区域，舰船目标存在数量大、密度高及尺寸多变的特点。预测过程中会出现大量预测框重叠的现象，在经过非极大值抑制处理后，会造成有效预测框的丢失，进而导致漏检问题的发生。
+由于待检的舰船目标尺寸较小，会误将近岸的码头、沿海的岛屿等检测为目标，造成舰船小目标的误检。
+(a)                        (b)
+(c)                                  (d)
+图1  Segment Anything[4]在典型场景下的分割结果。(a,c,d)为近岸复杂背景，(b)为带有十字亮斑的背景
+尽管前人已经进行了大量的研究工作，但舰船小目标的漏检和误检问题仍是该领域的两大难点。随着深度学习的蓬勃发展，利用深度学习方法实现SAR舰船小目标的精准检测已成为该领域的一种趋势。但在深度学习方法中，通用目标检测骨干网络对于SAR舰船小目标特征的提取能力不足，如何设计一种针对SAR舰船小目标检测的特种网络是目前亟待解决的重要问题。对于推动深度学习方法在SAR检测小目标领域的应用具有重要意义。
+国内外研究现状及发展动态分析
+传统的SAR舰船目标检测算法，主要是通过像素的统计特性与空间分布实现舰船目标的检测，如CFAR-Based方法[8,7]。除此之外，还有基于滑动窗口方法[9]、全局阈值分割方法[10] 、利用手工特征提取船体纹理、尺度特性[11]以及利用船体尾迹进行辅助检测[12] 的SAR舰船目标检测的研究。尽管传统方法取得了一定的检测效果，但仍具有操作过程繁琐、计算过程复杂、泛化能力较差以及检测精度有限等诸多问题。
+随着算力的不断提升，被称为GPU技术美学的深度学习方法[13] 开始在目标检测中崭露头角。在通用目标检测领域，从整体模型架构上可以分为两阶段目标检测算法[14] 、一阶段目标检测算法[18,17,16,15] 、无锚框检测方法[19]以及基于Transformer结构[20] 的检测方法。一部分学者从模型整体架构出发，将深度学习方法应用到舰船目标检测领域，如Zhou et al.[21] 采用两阶段检测模型与多普勒特征矩阵相结合的方式来解决因舰船运动导致的图像模糊与聚焦困难等问题，Ma et al.[22] 利用无锚框检测框架通过关键点估计的方式解决密集舰船小目标漏检问题，Xia et al[23] 结合卷积神经网络与视觉Transformer方法的优点来解决背景干扰与舰船边缘不清晰等问题，Guo et al.[24] 用一阶段检测算法检测速度快的优点，提出了一种面向舰船目标的实时性检测方法。虽然不同的模型架构在舰船目标检测的精度上有一定的提升，但他们大都忽略了一个重要问题，即小尺度舰船目标的检测，这也是舰船目标检测的难点之所在。因此，有学者提出采取多尺度融合结构和插入注意力模块的方式来提高小目标特征的捕获能力和检测精度。Zhang et al.[25] 采用了SE注意力[26]作为调节模块用以平衡各特征的贡献，而SE模块主要考虑的是不同通道上的权重赋值，并没有考虑舰船目标的位置信息。Su et al.[27] 设计了一种结合空间信息和通道信息的注意力CLAM用以增强骨干网络的特征提取能力，但CLAM只能捕获有限的局部信息，忽略了不同位置特征之间的长距离依赖关系。Chen et al[28] 采用形状相似距离(shape similar distance)作为度量使用k-means聚类方法对FPN结构进行优化，然而其仅仅针对锚框进行了聚类分析，并没有考虑到FPN在进行上采样的过程中，虽然获得了更强的语义信息，但可能会引起小目标位置信息的丢失，无法很好地利用低维特征图中小目标的位置信息。为了更好地融合多尺度信息与衡量预测框与真实框之前的差异关系，部分学者从损失函数入手进行改进。如Zhang et al.[29] 设计了全局平均精度损失GAP(Global Average percision)解决预测分数漂移的问题；Xu et al.[30] 提出了一种TDIOU损失，用以更为准确地度量预测目标与真实舰船目标的位置关系。尽管前人已经在SAR舰船目标检测上做出了巨大的努力，仍有许多被忽视的细节值得注意，如对于舰船小目标位置信息、特征信息等提取不够充分，特征提取仅限于局部信息提取缺少对于全局信息特征的提取与融合，损失函数仅关注预测框与真实目标的位置关系忽视了小像素目标在尺寸与位置上的差异性等等。
+主要研究内容、研究目标、拟解决的关键问题
+SAR舰船小目标特征提取不足问题
+SAR舰船小目标与常见待检目标的特性存在极大的差异，SAR图像成像过程中会受到海面的反射波的干扰，在图像上表现出海杂波的噪点，造成图像质量的恶化。生成的海杂波噪点在尺寸上与SAR舰船小目标较为接近，容易造成SAR舰船小目标的误检问题。此外，SAR舰船目标与常见RGB图像目标的不同之处还在于SAR舰船小目标缺少丰富的纹理、色彩信息，这使得通用检测网络在SAR舰船小目标检测任务上较为疲软。首先是通用骨干网络针对于SAR舰船小目标检测任务的适用性不强，不能有效地提取到充分的SAR舰船小目标特征，容易过度学习图像中的噪声分布，造成SAR舰船小目标的误检和漏检。因此，提高骨干网络对于SAR舰船小目标特征的有效捕获是实现SAR舰船小目标检测的第一步。常见的增强骨干网络特征提取能力的方式。早期的注意力机制仅仅关注特征的通道信息，如SE-Net[26] 但却提供了一个有效增强特征图表征能力的新角度。受SE注意力的启发，Woo et al.[31] 始从通道和空间两个角度考虑问题，提出了CBAM注意力，增强了对预测贡献较大特征的捕获，抑制了冗余特征的过度提取，具有较好的增强性能。此后，空间和通道两个维度成为注意力模块设计的常青树。然而这些注意力并不能完全适配于SAR舰船小目标检测，因此设计出增强SAR舰船小目标特征的注意力是首先需要解决的问题。其次，注意力的安放位置也关系着能否最大程度地增强SAR舰船小目标。因此，需要查明骨干网络的哪些位置对于特征的提取能力较弱，容易发生特征丢失的问题。
+多尺度特征融合问题
+由于SAR舰船目标的像素较为微小，在宽幅图像中占比较小，会极大地加剧SAR舰船小目标的难度。同时在近岸区域SAR舰船小目标在形态上与周边的岛屿、码头等具有较高的相似度，易将码头、岛屿等目标误检为SAR舰船小目标。沿岸舰船的密集排列也是造成SAR舰船小目标漏检的原因之一。为解决这一问题，众多研究提出从多尺度特征提取、融合角度，增加对于小目标检测的有效性。从网络架构角度来看，基于卷积方法的神经网络，通过卷积核进行滑窗，获取的大都为局部特征，特征的完整度、全局性均具有一定的局限。基于Transformer方法的神经网络，获取到的为全局信息，然而由于SAR舰船目标的尺寸特性，在利用Transfomer进行全局特征提取时，往往会将小目标的特征忽略，漏检概率大大增加。但无论Transformer还是CNN架构，均有在多尺度特征提取方面的成果案例，如CNN中的SPP、SPPF、RFB等，Transformer中的Swin-Transformer均将多尺度特征提取、融合技术应用到各个任务。然而，尽管多尺度特征提取对于提高检测准确率十分有效，但是对于SAR舰船小目标检测来说，仍然存在着一定的不足。因此，需要设计一种针对于SAR舰船 小目标的多尺度特征提取、精炼、融合模块，以实现SAR舰船小目标的精准检测。
+小目标尺寸波动问题
+随着神经网络捕获特征的能力增强，传统的损失函数已无法很好地实现预测框与真实框的贴合，为了解决这一问题，学者们提出了IOU损失[34,33,32]，CIOU便是其中的佼佼者。
+如图2所示，CIOU主要考量了重叠度(overlap area）、中心点距离(central point)和长宽比(aspect ratio)[33]，其损失函数可表示为：
+图2 CIOU示例图，虚线代表了最小闭包，粉色框表示了ground truth，蓝色框表示了锚框，红色实线表示了最小闭包的对角线距离（公式中的C），蓝色实线表示了两个框中心点的距离（公式中的D）
+尽管CIOU Loss综合考虑了多个衡量指标，但我们认为其在对小目标的捕获上，因其对小像素目标位置较为敏感，因此在进行小目标预测框回归过程中，移动很小的距离就可能导致损失产生较大的变化，经过NMS后，可能会降低正样本的个数，产生大量漏检的情况。为了更好地说明这一情况，我们将举一个较为极端的例子来说明。如图3所示，每个方格代表一个像素，虚线表示两个边框的最小闭包，红色框代表Ground Truth，蓝色框代表Anchor, 为了更直观的展示，我们将两个box的宽幅比设为1，用以表示小目标像素的边框回归过程。根据公式(1.1)-(1.4)计算两个边框的CIOU，(a)的CIOU值为1.25，(b)的CIOU值为0.8125，IOU值的增量为0.4375，可以较为明确地看到，仅仅移动了两个像素，CIOU的变化便为初始数值的三分之一。
+(a)无交集的情况                    (b) 移动两个像素情况
+CIOU =1.25CIOU=0.8125
+图3 CIOU变化实例
+学位论文的研究方法、技术路线、试验手段、关键技术等论述
+研究方法
+针对SAR舰船小目标特征提取不足的问题，我们设计了Pixel-wise Shuffle Attention模块(PWSA)和Non-Local Shuffle Attention模块(NLSA)，用以解决骨干网络针对SAR舰船小目标特征提取能力疲软问题，同时探究了骨干网络结构特点，为注意力的安放位置提供了指导。
+针对多尺度特征融合问题，我们提出了TRF-SPP多尺度融合模块，用于扩大SAR舰船小目标检测网络的感受野，获取多感受野特征，实现对岛屿、码头以及舰船目标的良好区分。
+针对小目标尺寸波动的问题，我们提出了R-tradeoff损失用于提高SAR舰船小目标的检测概率，同时对于训练的收敛速度与检测的准确率实现平衡。
+技术路线
+所提网络（DSF-Net）的主要结构如图4所示。我们将整个SAR舰船小目标检测网络模块化，骨干网络负责主要特征的提取，连接颈负责特征的精炼和融合，检测头负责完成目标检测任务的“最后一公里”。同时，我们认为骨干网络与连接颈之间的横向连接部分至关重要，他决定了进行特征融合的原始材料是否具有良好的特征表征能力，横向连接的稳定性决定了最终特征融合的有效性。由于其像桥一样连接着骨干网络和颈部，我们把骨干网络的横向连接起始点称为桥节点。我们在骨干网络中添加了PWSA模块，在骨干网络的尾部使用TRF-SPP替换了传统的SPPF。针对网络颈部，我们在桥节点处添加了NLSA模块，同时将网络颈部采用了PANet[35] 结构进行多尺度特征融合。将网络颈部的输出分为三路输入到检测头进行最后的目标预测。
+PWSA模块设计
+SAR舰船小目标受其自身尺寸特性和成像特点的限制，易在成像过程中产生乘性斑点噪声对舰船目标产生遮挡。我们认为通用的骨干网络对于舰船小目标的特征提取能力较为疲软，不足以提取到较为完整的舰船小目标特征；且随着网络层数的加深，会存在舰船小目标特征丢失的问题。为了进一步加强骨干网络对于舰船小目标特征的提取能力，设计了Pixel Wise Shuffle Attention 模块，其结构如图5所示。
+图4  DSF-Net网络结构图
+Figure 44. Illustration of the framework of DSF-NET.
+为了更好地提取到较为完整的舰船小目标特征，首先对输入的特征进行分组操作，即沿通道维度将特征分为g组，每组的通道维度为c/g，再将每一组的特征进行均分，使每部分通道维度为c/2g，分别对这两部分特征从空间维度和通道维度进行增强，采用拼接方式对其进行聚合，以减少参数量。随后将每组数据进行二次聚合。最后，采取Pixel Wise Shuffle的形式，将特征整合为(C/4,2H,2W)的形式，实现对不同通道信息交流的同时提高目标的分辨率。
+图5 Pixel-Wise 混洗注意力结构图
+Figure 5. The structure of Pixel-Wise Shuffle Attention module.
+PWSA的中的分组增强过程可由公式（1.5）和公式（1.6）来表示:
+其中、 为Split后两部分特征，、为对、从空间和通道进行增强后的输出，、为输出特征的高和宽，、、、分别为权重和偏置，GN为Group Normalization,表示点乘。
+PWSA的输出结果可做如下表示：
+其中，S表示Pixel Wise Shuffle操作，E表示Concatenate操作。
+NLSA模块设计
+图6详细的展示了NLSA模块的结构。将带有PWSA模块的骨干网络所提取到的特征输入到NLSA模块中，为了能够提高特征提取的效率，首先将特征进行分组，随后将Non Local的结构嵌入到特征增强部分，将每组特征分为两部分共享特征，一部分用以进行双重增强，另一部分构建非局部连接，捕获长距离依赖关系。再通过Non Local进行融合，不同的是我们替换了初始的element-wise sum为Concate以此更好地保留多种特征，增加结构的稳定性。最后，聚合多组特征并进行信道混洗，以此来增加各通道间信息交流。
+图6 Non-Local 结构混洗注意力设计
+Figure 6. The architecture of Non-Local Shuffle Attention module.
+对于PWSA模块与NLSA模块在特征提取网络中的位置也需要格外考究。我们认为Bridge Node是一个重要的结点，一是作为骨干网络对应尺度特征最为丰富的特征层，二是作为特征融合Neck与骨干网络的交汇点，因此Bridge Node处的特征增强尤为重要。我们建议把PWSA模块放置在Brdige Node后，以此来增强骨干网络捕获舰船小目标的特征；将NLSA模块放置在Neck的横向连接上，一方面促进多尺度信息的融合，另一方面保持横向连接结构的稳定性。
+TRF-SPP模块设计
+在SAR舰船小目标检测任务中，误检问题是一个巨大的挑战。尤其在近岸区域易把码头、岛屿等误检为舰船小目标，并且由舰船移动产生的光斑也会造成误检的情况。我们认为造成近岸区域误检原因主要为对上下文信息的捕获能力较弱，所捕获的特征缺少全局信息，难以依靠局部信息判别近岸背景。为了解决上述问题，我们提出了TRF-SPP模块，其结构如图7所示。
+图7 TRF-SPP结构示图
+Figure 7. The architecture of Triple Receptive Field-Spatial Pyramid Pooling module
+图8 SCTS结构示意图
+Figure 8. The structure of Squeeze Concatenate-Triple Split module.
+将输入的特征分为两个分支，其一经过SPPF结构，用以获取基本的多尺度特征，为了获取较多的上下文信息，我们在第二路分支中添加了带有空洞卷积的特征捕获结构，用以增加感受野的维度。在第二路分支中我们采用了SCTS模块来增强多重感受野特征，并将其与SPPF提取到的基本感受野特征进行融合。
+SCTS的结构如图8所示。首先，利用三种空洞卷积的模板对输入特征进行处理，随后使用Conv1×1调整三种卷积的维度。将得到的特征依次挤压在一起，形成特征融合，最后利用Conv1×1将其维度变为3，通过Softmax转化到权重值域，最后分裂为三重权重。将这三重权重注入到TRF-SPP，以实现对于多重感受特征的增强。
+为克服CIOU受小目标位置波动干扰严重的问题，我们将CIOU损失与归一化Wasserstein距离损失(NWD)进行权衡，一方面利用NWD损失对于小目标检测的优良性能，提升网络的抗漏检能力。另一方面利用CIOU快速收敛的特性，实现训练过程的快速收敛。通过权重因子进行平衡，最终实现两者的完美平衡。
+R-tradeoff loss的计算公式如下：
+其中，代表A bounding box，代表B bounding box，代表二范数，C为常数系数。
+实验手段
+实验部分主要分为定量的可视化实验和定性的数值分析实验，其中可视化实验主要包括使用热力图分析特征的提取过程与关注要点，数值分析实验主要包括消融实验和对比实验，实验采用的数据集为LS-SSDDv1.0[36]。LS-SSDDv1.0是一个大尺度背景SAR舰船小目标检测数据集。由于图像宽幅过大，不利于计算机的读取，因此按照官方建议，将图像裁剪为800×800的子图进行训练，训练集和验证集的比例为2:1，共9000张图片。所进行的所有实验都是在Pythroch框架下进行的,操作系统为Windows 10 with 32G RAM，CPU为12th Gen Intel(R) Core(TM) i7-12700F，GPU为NVIDIA GeForce RTX 3080 Ti, 12288MiB。初始的学习率为0.01，学习率衰减因子为0.01，momentum为0.937，weight_decay为0.0005，采用了cosine LR scheduler，初始epoch为200，batch size为16，优化器采用了SGD优化器，训练和验证的输入图像尺寸均调整为640×640。我们选取了YOLO V5作为基准模型，为了公平起见，参数值与YOLO V5保持一致，同时均采用最低的数据增强，以便于与其他方法进行公平比较。
+年度研究计划
+2023年3月01日——2023年4月01日
+进行前期文献的前期阅读和调研，了解该领域的痛点问题，并设计相应的解决方案。设计双重Shuffle注意力的基本结构，设计损失函数的数学表达式。
+2023年04月01日——2023年10月15日
+设计网络的基本模块组成，测试网络结构的稳定性，设计多尺度融合模块的结构并进行测试
+2023年10月16日——2024年06月30日
+训练网络，根据反馈结果不断进行优化，调整参数达到最优，不断试验，改进方法
+2024年07月01日——2024年12月30日
+构思论文结构框架，完成论文初稿
+2025年01月01号——2025年04月01日
+对论文初稿进行精炼、完善，准备答辩
+现有的研究基础；
+为了证明DSF-Net的每一个模块都对SAR舰船小目标的检测起到了积极的作用，我们在LS-SSDDv1.0数据集上进行了消融实验，实验结果如表1所示。
+表1 LS-SSDD-v1.0下的消融实验
+表1：The ablation experiment on LS-SSDD-v1.0 of the entire scenes.
+Method
+P(%)
+R(%)
+mAP50(%)
+mAP50-95(%)
+F1(%)
+GFLOPs
+YOLO v5
+84
+63.6
+73.3
+27.1
+72
+15.9
++ PWSA&NLSA
+85.1(+1.1)
+66.5(+2.9)
+75.5(+2.3)
+28.9(+1.8)
+75(+3)
+22.1
++ TRF-SPP
+85.5(+1.5)
+67.6(+4)
+76.1(+2.8)
+29.2(+2.1)
+76(+4)
+33.5
++ R-tradeoff Loss
+86.4(+2.4)
+68.7(+5.1)
+76.9(+3.6)
+29.4(+2.3)
+77(+5)
+33.5
+通过对表1中的实验结果进行分析，我们可以与理论互相印证。PWSA置于骨干网络中，NLSA置于Bridge Node后，既扩大了骨干网络对于小目标特征的提取能力，又增加了对于长距离依赖关系的捕获，因此对于准确率和召回率均会有一定程度的提升。TRF-SPP的作用主要在于提高网络对于上下文信息的捕获能力，降低漏检的概率，因此理论上召回率会有所提升。从实验数据来看，在PWSA&NLSA的基础上，添加TRF-SPP后，召回率相较于基线模型提升了6.3%。R-tradeoff Loss在不增加计算量的同时，对CIOU Loss与NWD Loss进行权衡，尽可能在保留CIOU预防误检的能力的同时，提高对于小目标的漏检能力。由实验结果可以看出，相较于基线模型准确率提升了2.8%，召回率提升了8%，F1分数提升了6.9%，且更换R-tradeoff Loss前后GFLOPs没有变化。
+同时，我们将本文所提的DSF-Net与其他目标检测方法进行了对比，其中包括最新的目标检测方法（state of art）、两阶段目标检测算法、一阶段目标检测算法、无锚框目标检测算法以及SAR舰船小目标检测领域的最新方法, 结果在表2中详细给出。我们也进行Grad-CAM可视化测试并在baseline与本文所提方法间进行比较，其结果如图7所示。从结果来看，所提方法在SAR舰船小目标检测领域取得了较为优秀的效果。
+表2：LS-SSDD-v1.0数据集上与其他方法对比结果
+表2：Comparsion with other detection Methods in LS-SSDD-v1.0 of entire scenes.
+Method
+P(%)
+R(%)
+mAP50(%)
+mAP50-95(%)
+F1(%)
+GFLPOs
+Faster R-CNN[14]
+58
+61.6
+57,7
+--
+59.75
+--
+Cascade R-CNN[37]
+54.1
+66.2
+59.0
+--
+59.54
+--
+YOLO V5[38]
+84
+63.6
+73.3
+27.1
+72
+15.9
+YOLO V8[39]
+83
+65.8
+74.2
+29.6
+73
+28.4
+FC[40]
+--
+--
+73
+--
+--
+--
+Guided Anchoring[41]
+80.1
+63.8
+59.8
+--
+71.0
+--
+FoveaBox*[42]
+77.5
+59.9
+52.2
+--
+67.6
+--
+FCOS[43]
+50.5
+66.7
+63.2
+--
+57.48
+--
+MTL-Det*[44]
+--
+--
+71.7
+--
+--
+--
+ATSS*[45]
+74.2
+71.5
+68.1
+--
+72.8
+--
+YOLO X**[19]
+66.78
+75.44
+--
+--
+70.85
+--
+RefineDet**[46]
+66.72
+70.32
+--
+--
+68.43
+--
+SII-Net[27]
+68.2
+79.3
+76.1
+--
+73.3
+--
+DSF-Net(ours)
+86.4
+68.7
+76.9
+29.4
+77
+33.5
+原始图像
+真实目标框
+YOLO V5的Grad-CAM
+本文方法的Grad-CAM
+图7 基线模型与本文模型在Grad-CAM上的结果对比
+Figure 7. The results of Grad-CAM between the baseline and our DSF-Net
+现有研究条件及可能遇到的困难和问题分析
+操作系统为Windows 10 with 32G RAM，CPU为12th Gen Intel(R) Core(TM) i7-12700F，GPU为NVIDIA GeForce RTX 3080 Ti, 12288MiB。
+可能遇到的困难和问题分析
+不同网络具有不同的结构，针对于不同结构，注意力模块放在什么位置会发挥最大的作用是一个巨大问题,同时能否保证注意力模块具有较强的泛化能力，需要对注意力模块的结构和通道维度进行测试实验。
+改进多尺度特征融合时，采用了空洞卷积模块，会增加部分参数量。而且实验所采用的数据集时大宽幅的SAR遥感图像，在使用时无法直接送入计算机，需要对图像进行裁剪使用，而裁剪过程中可能会将SAR舰船小目标裁剪为两半，在完整图像上进行推理时，可能会仅仅检测出半边舰船目标。
+损失函数在设计过程中需要考虑到各参数之间的相互关系和收敛速度等问题，需要经过大量严格的实验证明
+[1]Zhang L, Liu Y, Zhao W, et al. Frequency-Adaptive Learning for SAR Ship Detection in Clutter Scenes[J]. IEEE Transactions on Geoscience and Remote Sensing, 2023: 1–1.
+[2]Zhang C, Yang C, Cheng K, et al. MSIF: Multisize Inference Fusion-Based False Alarm Elimination for Ship Detection in Large-Scale SAR Images[J]. IEEE Transactions on Geoscience and Remote Sensing, 2022, 60: 1–11.
+[3]Li J, Xu C, Su H, et al. Deep Learning for SAR Ship Detection: Past, Present and Future[J]. Remote Sensing, Multidisciplinary Digital Publishing Institute, 2022, 14(11): 2712.
+[4]Kirillov A, Mintun E, Ravi N, et al. Segment Anything[J]. arXiv, 2023.
+[5]Singh P, Shree R. A new homomorphic and method noise thresholding based despeckling of SAR image using anisotropic diffusion[J]. Journal of King Saud University - Computer and Information Sciences, 2020, 32(1): 137–148.
+[6]Zhou Y, Liu H, Ma F, et al. A Sidelobe-Aware Small Ship Detection Network for Synthetic Aperture Radar Imagery[J]. IEEE Transactions on Geoscience and Remote Sensing, 2023, 61: 1–16.
+[7]Xiangguang Leng, Kefeng Ji, Kai Yang, et al. A Bilateral CFAR Algorithm for Ship Detection in SAR Images[J]. IEEE Geoscience and Remote Sensing Letters, 2015, 12(7): 1536–1540.
+[8]Ai J, Luo Q, Yang X, et al. Outliers-Robust CFAR Detector of Gaussian Clutter Based on the Truncated-Maximum-Likelihood- Estimator in SAR Imagery[J]. IEEE Transactions on Intelligent Transportation Systems, 2020, 21(5): 2039–2049.
+[9]Hou B, Chen X, Jiao L. Multilayer CFAR Detection of Ship Targets in Very High Resolution SAR Images[J]. IEEE Geoscience and Remote Sensing Letters, 2015, 12(4): 811–815.
+[10]Renga A, Graziano M D, Moccia A. Segmentation of Marine SAR Images by Sublook Analysis and Application to Sea Traffic Monitoring[J]. IEEE Transactions on Geoscience and Remote Sensing, 2019, 57(3): 1463–1477.
+[11]Copeland A C, Ravichandran G, Trivedi M M. Localized Radon transform-based detection of ship wakes in SAR images[J]. IEEE Transactions on Geoscience and Remote Sensing, 1995, 33(1): 35–45.
+[12]Karakuş O, Rizaev I, Achim A. Ship Wake Detection in SAR Images via Sparse Regularization[J]. IEEE Transactions on Geoscience and Remote Sensing, 2020, 58(3): 1665–1677.
+[13]Zou Z, Shi Z, Guo Y, et al. Object Detection in 20 Years: A Survey[J]. arXiv, 2019.
+[14]Ren S, He K, Girshick R, et al. Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks[J]. arXiv, 2016.
+[15]Xu S, Wang X, Lv W, et al. PP-YOLOE: An evolved version of YOLO[J]. arXiv, 2022.
+[16]Wang C-Y, Bochkovskiy A, Liao H-Y M. YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors[J]. arXiv, 2022.
+[17]Li C, Li L, Jiang H, et al. YOLOv6: A Single-Stage Object Detection Framework for Industrial Applications[J]. arXiv, 2022.
+[18]Bochkovskiy A, Wang C-Y, Liao H-Y M. YOLOv4: Optimal Speed and Accuracy of Object Detection[J]. arXiv, 2020.
+[19]Ge Z, Liu S, Wang F, et al. YOLOX: Exceeding YOLO Series in 2021[J]. arXiv, 2021.
+[20]Dosovitskiy A, Beyer L, Kolesnikov A, et al. An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale[J]. arXiv, 2021.
+[21]Zhou Y, Fu K, Han B, et al. D-MFPN: A Doppler Feature Matrix Fused with a Multilayer Feature Pyramid Network for SAR Ship Detection[J]. Remote Sensing, Multidisciplinary Digital Publishing Institute, 2023, 15(3): 626.
+[22]Ma X, Hou S, Wang Y, et al. Multiscale and Dense Ship Detection in SAR Images Based on Key-Point Estimation and Attention Mechanism[J]. IEEE Transactions on Geoscience and Remote Sensing, 2022, 60: 1–11.
+[23]Xia R, Chen J, Huang Z, et al. CRTransSar: A Visual Transformer Based on Contextual Joint Representation Learning for SAR Ship Detection[J]. Remote Sensing, Multidisciplinary Digital Publishing Institute, 2022, 14(6): 1488.
+[24]Guo Y, Chen S, Zhan R, et al. LMSD-YOLO: A Lightweight YOLO Algorithm for Multi-Scale SAR Ship Detection[J]. Remote Sensing, Multidisciplinary Digital Publishing Institute, 2022, 14(19): 4801.
+[25]Zhang T, Zhang X. Squeeze-and-Excitation Laplacian Pyramid Network With Dual-Polarization Feature Fusion for Ship Classification in SAR Images[J]. IEEE Geoscience and Remote Sensing Letters, 2022, 19: 1–5.
+[26]Hu J, Shen L, Albanie S, et al. Squeeze-and-Excitation Networks[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2020, 42(8): 2011–2023.
+[27]Su N, He J, Yan Y, et al. SII-Net: Spatial Information Integration Network for Small Target Detection in SAR Images[J]. Remote Sensing, Multidisciplinary Digital Publishing Institute, 2022, 14(3): 442.
+[28]Chen P, Li Y, Zhou H, et al. Detection of Small Ship Objects Using Anchor Boxes Cluster and Feature Pyramid Network Model for SAR Imagery[J]. Journal of Marine Science and Engineering, Multidisciplinary Digital Publishing Institute, 2020, 8(2): 112.
+[29]Zhang L, Liu Y, Qu L, et al. A Spatial Cross-Scale Attention Network and Global Average Accuracy Loss for SAR Ship Detection[J]. Remote Sensing, Multidisciplinary Digital Publishing Institute, 2023, 15(2): 350.
+[30]Xu Z, Gao R, Huang K, et al. Triangle Distance IoU Loss, Attention-Weighted Feature Pyramid Network, and Rotated-SARShip Dataset for Arbitrary-Oriented SAR Ship Detection[J]. Remote Sensing, 2022, 14(18): 4676.
+[31]Woo S, Park J, Lee J-Y, et al. CBAM: Convolutional Block Attention Module[A]. 见: V. Ferrari, M. Hebert, C. Sminchisescu, et al. Computer Vision – ECCV 2018[M]. Cham: Springer International Publishing, 2018, 11211: 3–19.
+[32]Zhang Y-F, Ren W, Zhang Z, et al. Focal and efficient IOU loss for accurate bounding box regression[J]. Neurocomputing, 2022, 506: 146–157.
+[33]Zheng Z, Wang P, Liu W, et al. Distance-IoU Loss: Faster and Better Learning for Bounding Box Regression[J]. Proceedings of the AAAI Conference on Artificial Intelligence, 2020, 34(07): 12993–13000.
+[34]Rezatofighi H, Tsoi N, Gwak J, et al. Generalized Intersection Over Union: A Metric and a Loss for Bounding Box Regression[A]. 2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)[C]. Long Beach, CA, USA: IEEE, 2019: 658–666.
+[35]Liu S, Qi L, Qin H, et al. Path Aggregation Network for Instance Segmentation[J]. arXiv, 2018.
+[36]Zhang T, Zhang X, Ke X, et al. LS-SSDD-v1.0: A Deep Learning Dataset Dedicated to Small Ship Detection from Large-Scale Sentinel-1 SAR Images[J]. Remote Sensing, Multidisciplinary Digital Publishing Institute, 2020, 12(18): 2997.
+[37]Cai Z, Vasconcelos N. Cascade R-CNN: Delving Into High Quality Object Detection[A]. 2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition[C]. Salt Lake City, UT: IEEE, 2018: 6154–6162.
+[38]Jocher G. YOLOv5 by Ultralytics[J]. 2020.
+[39]GitHub - ultralytics/ultralytics: NEW - YOLOv8 🚀 in PyTorch > ONNX > CoreML > TFLite[EB/OL]. /2023-03-31. https://github.com/ultralytics/ultralytics.
+[40]Zhang L, Wang H, Wang L, et al. Filtered Convolution for Synthetic Aperture Radar Images Ship Detection[J]. Remote Sensing, Multidisciplinary Digital Publishing Institute, 2022, 14(20): 5257.
+[41]Wang J, Chen K, Yang S, et al. Region Proposal by Guided Anchoring[A]. 2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)[C]. Long Beach, CA, USA: IEEE, 2019: 2960–2969.
+[42]Kong T, Sun F, Liu H, et al. FoveaBox: Beyound Anchor-Based Object Detection[J]. IEEE Transactions on Image Processing, 2020, 29: 7389–7398.
+[43]Tian Z, Shen C, Chen H, et al. FCOS: Fully Convolutional One-Stage Object Detection[A]. 2019 IEEE/CVF International Conference on Computer Vision (ICCV)[C]. Seoul, Korea (South): IEEE, 2019: 9626–9635.
+[44]Zhang X, Huo C, Xu N, et al. Multitask Learning for Ship Detection From Synthetic Aperture Radar Images[J]. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 2021, 14: 8048–8062.
+[45]Zhang S, Chi C, Yao Y, et al. Bridging the Gap Between Anchor-Based and Anchor-Free Detection via Adaptive Training Sample Selection[A]. 2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)[C]. Seattle, WA, USA: IEEE, 2020: 9756–9765.
+[46]Zhang S, Wen L, Bian X, et al. Single-Shot Refinement Neural Network for Object Detection[A]. 2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition[C]. Salt Lake City, UT: IEEE, 2018: 4203–4212.
+上海海事大学学术学位硕士学位论文开题报告
+评审意见表
+学  号
+202230310004
+学生姓名
+翟近乐
+联系电话
+13589497236
+邮  箱
+202230310004@stu.shmtu.edu.cn
+导   师
+徐志京
+导师联系
+电   话
+13611675144
+第一次开题 □
+第二次开题 □
+导师考核意见（对课程学习情况、参加学术活动情况、论文工作及开题报告撰写情况、学习和工作态度等进行考查，给出考核成绩和具体改进意见和建议）：
+考核成绩：□ 通过，□ 不通过
+关于学位论文开题报告撰写质量及学位论文工作的具体意见（可加页）：
+导师签字：
+年    月    日
+评
+审
+专
+家
+组
+姓名
+职称
+学科专业
+是否博导
+签字
+组长
+成员
+专家组评审意见（对课程学习情况、参加学术活动情况、论文工作及开题报告撰写情况、学习和工作态度等进行考查，给出考核成绩和学位论文工作具体改进意见和建议）：
+选题是否属于本学科领域（含交叉学科）：□是，□不是（不通过，须重新开题）
+考核成绩：□ 通过，□ 不通过
+关于学位论文开题报告撰写质量及学位论文工作的具体意见（可加页）：
+组长签字：
+年      月     日

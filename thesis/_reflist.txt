@@ -1,0 +1,27 @@
+[ 1] ITU-R. Framework and overall objectives of the future development of IMT for 2030 and
+[ 2] WIEGAND T, SULLIVAN G J, BJØNTEGAARD G, LUTHRA A. Overview of the H.264/AVC video cod
+[ 3] ISO/IEC. Information technology — Generic coding of moving pictures and associated au
+[ 4] STURM C, WIESBECK W. Waveform design and signal processing aspects for fusion of wire
+[ 5] LI X, CUI Y, ZHANG J A, LIU F, ZHANG D, HANZO L. Integrated human activity sensing an
+[ 6] WEI Z, QU H, WANG Y, et al. Integrated sensing and communication signals toward 5G-A 
+[ 7] KAUSHIK A, SINGH R, DAYARATHNA S, et al. Toward integrated sensing and communications
+[ 8] 徐金雷, 赵俊湦, 卢华兵, 蒋旭, 赵楠. 面向6G的多维扩展通感一体化研究综述[J]. 电子与信息学报, 2024, 46(5): 1672-1683.
+[ 9] 尉志青, 冯志勇, 李怡恒, 等. 太赫兹通信感知一体化波形：现状与展望[J]. 通信学报, 2022, 43(1): 3-10.
+[10] BRUNNER D, GIROTO DE OLIVEIRA L, MUTH C, et al. Bistatic OFDM-based ISAC with over-th
+[11] ZHOU Z, ZHANG C, XU X, ZENG Y. OpenISAC: An open-source real-time experimentation pla
+[12] RAHMAN M L, ZHANG J A, HUANG X, GUO Y J, HEATH R W. Framework for a perceptive mobile
+[13] IMMICH R, CERQUEIRA E, CURADO M. Mechanisms for resilient video transmission[J]. arXi
+[14] ZHOU Z, ZHANG C, XU X, ZENG Y. OpenISAC: An open-source real-time experimentation pla
+[15] ALAOUI-FDILI O, CORLAY P, FAKHRI Y, COUDOUX F-X, ABOUTAJDINE D. A cross-layer approac
+[16] NISHAT K, GNAWALI O, ABDELHADI A. Adaptive bitrate video streaming for wireless nodes
+[17] TRAN THAI T, LACAN J, LOCHIN E. Joint on-the-fly network coding/video quality adaptat
+[18] TUNG T-Y, GÜNDÜZ D. DeepWiVe: Deep-learning-aided wireless video transmission[J]. IEE
+[19] LIN S, COSTELLO D J. Error control coding[M]. 2nd ed. Upper Saddle River: Prentice Ha
+[20] EDER Y, ELDAR Y C. Sparsity-based multi-person non-contact vital signs monitoring via
+[21] ZHANG B, JIANG B, ZHENG R, ZHANG X, LI J, XU Q. Pi-ViMo: Physiology-inspired robust v
+[22] HSIEH C-H, TSAI T-L, TSENG P-H. Harmonic MUSIC method for mmWave radar-based vital si
+[23] 屈乐乐, 刘淑杰, 杨天虹, 孙延鹏. 基于多通道的调频连续波雷达生命信号提取[J]. 电子与信息学报, 2022, 44(4): 1318-1326.
+[24] 金添, 何元, 李新羽, 宋永坤, 杨阳. 超宽带雷达人体行为感知研究进展[J]. 电子与信息学报, 2022, 44(4): 1147-1155.
+[25] 陈小龙, 关键, 何友. 微多普勒理论在海面目标检测中的应用及展望[J]. 雷达学报, 2013, 2(1): 123-134.
+[26] LI X, CUI Y, ZHANG J A, LIU F, ZHANG D, HANZO L. Integrated human activity sensing an
+[27] CASSAGNE A, HARTMANN O, LÉONARDON M, et al. AFF3CT: A fast forward error correction t

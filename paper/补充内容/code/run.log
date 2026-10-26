@@ -1,0 +1,21 @@
+========== Framing self-test (v2, 5 modes) ==========
+
+test_roundtrip_one(none)
+test_roundtrip_one(prefix)
+test_roundtrip_one(prefix_crc_drop)
+test_roundtrip_one(prefix_crc_resync)
+test_crc_detection
+  len-bit flips: 16/16 detected
+test_m2a_vs_m2b
+  M2a: drop(804 bytes lost) | M2b: deliver 804 bytes, start code FOUND
+test_chunked
+  15KB -> 15 chunks, last=692, total=15360
+test_start_code
+test_misalign_detector
+test_none_mode_fails
+  M0 切出 1275 字节，真实载荷 1000 字节，多出 275 字节垃圾
+test_stats
+[FRAMING] blocks=200 drop=0 drop_ratio=0.0000 resync=0 gap=0 misalign=0 misalign_ratio=0.0000 recover_avg=0.0 delivered=0
+[FRAMING] blocks=200 drop=1 drop_ratio=0.0050 resync=1 gap=1 misalign=1 misalign_ratio=0.0050 recover_avg=8.0 delivered=1000
+
+========== 191 passed, 0 failed ==========

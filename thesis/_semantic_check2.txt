@@ -1,0 +1,5 @@
+OK  [2] 锚点"Overview of the H.264/AVC" -> WIEGAND T, SULLIVAN G J, BJØNTEGAARD G, LUTHRA A. Overview of the H.264/AVC vide
+BAD [14] 锚点"Two-way wireless video" -> ZHOU Z, ZHANG C, XU X, ZENG Y. OpenISAC: An open-source real-time experimentatio
+OK  [26] 锚点"Integrated human activity" -> LI X, CUI Y, ZHANG J A, LIU F, ZHANG D, HANZO L. Integrated human activity sensi
+
+关键条目复核通过: False

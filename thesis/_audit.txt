@@ -1,0 +1,68 @@
+=== 重复条目 ===
+无
+
+=== 正文引用语境（供人工确认语义） ===
+[ 1] 2160-0《2030 年及以后 IMT 发展的框架和总体目标》中 ISAC 作为六大场景之一的定义
+[ 2] 为六大场景之一的定义<sup>[1]</sup>，以及 H.264/AVC（ITU-T H.264）
+[ 3] U-T H.264）<sup>[2]</sup>、MPEG 传输流（ISO/IEC 13818-1）
+[ 1] rated Sensing and Communication, ISAC）列为六大关键使用场景之一
+[ 2] 码具有结构性破坏——单个误码宏块会沿预测链传播直至下一个 I 帧，造成长达一个图像组（GOP）的花屏
+[ 4] 空口实验  OFDM 波形融合通信与雷达感知的处理框架由 Sturm 与 Wiesbeck 系统建立
+[ 5] ]</sup>。此后 ISAC 理论研究迅速展开：Liu 等系统综述了双功能无线网络的波形与系统设计
+[ 6] 形与系统设计<sup>[5]</sup>；Wei 等面向 5G-A/6G 综述了 ISAC 信号设计
+[ 7] up>[6]</sup>；Kaushik 等从标准化视角梳理了 ITU-R 与 3GPP 的推进路径
+[ 8] <sup>[7]</sup>；国内方面，徐金雷等从多维扩展角度系统梳理了 6G 通感一体化的演进脉络
+[ 9] 一体化的演进脉络<sup>[8]</sup>，尉志青等探讨了高频段（太赫兹）通感一体化波形的设计挑战
+[10] 时实验**长期是短板。近年开源平台开始填补该空白：Brunner 等实现了双站 ISAC 的空口同步
+[11] C——支持单/双站感知、YAML 运行时配置、USRP 硬件生态的开源实时 OFDM-ISAC 平台
+[12] 感知移动网络（Perceptive Mobile Network）框架，把蜂窝网络作为感知传感器网络
+[13]  无线视频传输与跨层设计  无线视频的抗误码传输已有大量研究：Immich 等综述了弹性视频传输机制
+[14] 述了弹性视频传输机制<sup>[13]</sup>；Xu 等研究了包级 FEC 与协作分集的联合设计
+[15] p>[14]</sup>；Alaoui-Fdili 等提出面向无线视频传感网的 H.264 跨层方案
+[16] 网的 H.264 跨层方案<sup>[15]</sup>；Nishat 等综述了无线自适应码率流媒体
+[17] up>[16]</sup>；Tran Thai 等提出 Tetrys 在线网络编码的冗余度自适应算法
+[18] ，如 DeepWiVe）尝试端到端替换传统栈，但要求更换编解码器，难以在既有 H.264 生态上部署
+[19] 码与残留误码处理  针对突发与残留错误，RS 外码 + 内码（卷积码/LDPC）的级联结构是经典方案
+[20] 测是被大量复现的感知能力：基于 FMCW 毫米波雷达（如 Eder 与 Eldar 的稀疏多人体监测
+[21] Eder 与 Eldar 的稀疏多人体监测<sup>[20]</sup>、Pi-ViMo 的鲁棒监测
+[22] ]</sup>、Pi-ViMo 的鲁棒监测<sup>[21]</sup>、谐波 MUSIC 频率估计
+[23] CSI 的方案均能提取呼吸与心跳信号；国内方面，屈乐乐等研究了多通道调频连续波雷达的生命信号提取方法
+[24] 波雷达的生命信号提取方法<sup>[23]</sup>，金添等系统综述了超宽带雷达人体行为感知的进展
+[25] 带雷达人体行为感知的进展<sup>[24]</sup>，陈小龙等阐述了微多普勒效应及微动特征提取方法
+[26] d Human Activity Sensing and Communications）的框架性论述
+[12] ）的框架性论述<sup>[26]</sup>，Rahman 等的感知移动网络框架亦把人体作为感知对象
+[27] 55,K) 外码（自主实现）级联 LDPC(1008,504) 内码（内码基于 AFF3CT 库实现
+
+=== 文献表全文 ===
+[ 1] ITU-R. Framework and overall objectives of the future development of IMT for 2030 and beyond: R
+[ 2] WIEGAND T, SULLIVAN G J, BJØNTEGAARD G, LUTHRA A. Overview of the H.264/AVC video coding standa
+[ 3] ISO/IEC. Information technology — Generic coding of moving pictures and associated audio inform
+[ 4] STURM C, WIESBECK W. Waveform design and signal processing aspects for fusion of wireless commu
+[ 5] LIU F, CUI Y, MASOUROS C, et al. Integrated sensing and communications: Toward dual-functional 
+[ 6] WEI Z, QU H, WANG Y, et al. Integrated sensing and communication signals toward 5G-A and 6G: A 
+[ 7] KAUSHIK A, SINGH R, DAYARATHNA S, et al. Toward integrated sensing and communications for 6G: K
+[ 8] 徐金雷, 赵俊湦, 卢华兵, 蒋旭, 赵楠. 面向6G的多维扩展通感一体化研究综述[J]. 电子与信息学报, 2024, 46(5): 1672-1683.
+[ 9] 尉志青, 冯志勇, 李怡恒, 等. 太赫兹通信感知一体化波形：现状与展望[J]. 通信学报, 2022, 43(1): 3-10.
+[10] BRUNNER D, GIROTO DE OLIVEIRA L, MUTH C, et al. Bistatic OFDM-based ISAC with over-the-air sync
+[11] ZHOU Z, ZHANG C, XU X, ZENG Y. OpenISAC: An open-source real-time experimentation platform for 
+[12] RAHMAN M L, ZHANG J A, HUANG X, GUO Y J, HEATH R W. Framework for a perceptive mobile network u
+[13] IMMICH R, CERQUEIRA E, CURADO M. Mechanisms for resilient video transmission[J]. arXiv preprint
+[14] XU X, ALAY O, ERKIP E, WANG Y, PANWAR S. Two-way wireless video communication using randomized 
+[15] ALAOUI-FDILI O, CORLAY P, FAKHRI Y, COUDOUX F-X, ABOUTAJDINE D. A cross-layer approach for vide
+[16] NISHAT K, GNAWALI O, ABDELHADI A. Adaptive bitrate video streaming for wireless nodes: A survey
+[17] TRAN THAI T, LACAN J, LOCHIN E. Joint on-the-fly network coding/video quality adaptation for re
+[18] TUNG T-Y, GÜNDÜZ D. DeepWiVe: Deep-learning-aided wireless video transmission[J]. IEEE Journal 
+[19] LIN S, COSTELLO D J. Error control coding[M]. 2nd ed. Upper Saddle River: Prentice Hall, 2004.
+[20] EDER Y, ELDAR Y C. Sparsity-based multi-person non-contact vital signs monitoring via FMCW rada
+[21] ZHANG B, JIANG B, ZHENG R, ZHANG X, LI J, XU Q. Pi-ViMo: Physiology-inspired robust vital sign 
+[22] HSIEH C-H, TSAI T-L, TSENG P-H. Harmonic MUSIC method for mmWave radar-based vital sign estimat
+[23] 屈乐乐, 刘淑杰, 杨天虹, 孙延鹏. 基于多通道的调频连续波雷达生命信号提取[J]. 电子与信息学报, 2022, 44(4): 1318-1326.
+[24] 金添, 何元, 李新羽, 宋永坤, 杨阳. 超宽带雷达人体行为感知研究进展[J]. 电子与信息学报, 2022, 44(4): 1147-1155.
+[25] 陈小龙, 关键, 何友. 微多普勒理论在海面目标检测中的应用及展望[J]. 雷达学报, 2013, 2(1): 123-134.
+[26] LI X, CUI Y, ZHANG J A, LIU F, ZHANG D, HANZO L. Integrated human activity sensing and communic
+[27] CASSAGNE A, HARTMANN O, LÉONARDON M, et al. AFF3CT: A fast forward error correction toolbox![J]
+
+=== 统计 ===
+文献条数: 27  正文引用标记: 30
+被引编号: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+未被引用: []

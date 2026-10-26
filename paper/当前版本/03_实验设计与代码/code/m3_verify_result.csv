@@ -1,0 +1,14 @@
+drop_ratio,n_drop,total_chunks,total_frames,base_frames,frame_ratio,decode_ok,trial,error
+0.0,0,629,60,60,1.0,True,0,
+0.01,6,629,60,60,1.0,True,0,[h264 @ 0000019dc4a7c940] negative number of zero coeffs at 31 20 [h264 @ 0000019dc4a7c940] error while decoding MB 31 2
+0.01,6,629,58,60,0.9666666666666667,True,1,[h264 @ 000001d0c0afd000] negative number of zero coeffs at 32 19 [h264 @ 000001d0c0afd000] error while decoding MB 32 1
+0.01,6,629,60,60,1.0,True,2,[h264 @ 000002847c820b40] cbp too large (3199971767) at 35 22 [h264 @ 000002847c820b40] error while decoding MB 35 22 [h
+0.05,31,629,58,60,0.9666666666666667,True,0,[h264 @ 000002d46a30bb40] negative number of zero coeffs at 5 1 [h264 @ 000002d46a30bb40] error while decoding MB 5 1 [h
+0.05,31,629,57,60,0.95,True,1,[h264 @ 0000020195caa100] negative number of zero coeffs at 38 14 [h264 @ 0000020195caa100] error while decoding MB 38 1
+0.05,31,629,60,60,1.0,True,2,[h264 @ 000001f9b345bd00] cbp too large (62) at 24 16 [h264 @ 000001f9b345bd00] error while decoding MB 24 16 [h264 @ 00
+0.1,63,629,45,60,0.75,True,0,[h264 @ 000001f709a7a080] mb_type 102 in P slice too large at 36 18 [h264 @ 000001f709a7a080] error while decoding MB 36
+0.1,63,629,45,60,0.75,True,1,[h264 @ 0000027a720fbcc0] negative number of zero coeffs at 26 3 [h264 @ 0000027a720fbcc0] error while decoding MB 26 3 
+0.1,63,629,43,60,0.7166666666666667,True,2,[h264 @ 000001afc7cdb440] negative number of zero coeffs at 8 4 [h264 @ 000001afc7cdb440] error while decoding MB 8 4 [h
+0.2,126,629,26,60,0.43333333333333335,True,0,[h264 @ 00000230f46ca940] corrupted macroblock 1 0 (total_coeff=-1) [h264 @ 00000230f46ca940] error while decoding MB 1 
+0.2,126,629,35,60,0.5833333333333334,True,1,[h264 @ 000001750f61ae80] negative number of zero coeffs at 8 4 [h264 @ 000001750f61ae80] error while decoding MB 8 4 [h
+0.2,126,629,47,60,0.7833333333333333,True,2,[h264 @ 0000020c959c9f40] negative number of zero coeffs at 8 4 [h264 @ 0000020c959c9f40] error while decoding MB 8 4 [h

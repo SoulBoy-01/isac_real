@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="470.88pt" height="258.48pt" viewBox="0 0 470.88 258.48" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-19T18:46:46.162449</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 258.48 
+L 470.88 258.48 
+L 470.88 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 9.63 252.047813 
+L 437.85 252.047813 
+Q 442.53 252.047813 442.53 248.054063 
+L 442.53 170.175938 
+Q 442.53 166.182187 437.85 166.182187 
+L 9.63 166.182187 
+Q 4.95 166.182187 4.95 170.175938 
+L 4.95 248.054063 
+Q 4.95 252.047813 9.63 252.047813 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #fbf6f4; stroke: #b5533c; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 62.982 51.361875 
+Q 66.96 51.361875 70.043573 51.361875 
+" clip-path="url(#pcb0221035e)" style="fill: none; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 67.243573 49.961875 
+L 70.043573 51.361875 
+L 67.243573 52.761875 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 137.862 51.361875 
+Q 141.84 51.361875 144.923573 51.361875 
+" clip-path="url(#pcb0221035e)" style="fill: none; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 142.123573 49.961875 
+L 144.923573 51.361875 
+L 142.123573 52.761875 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 208.062 51.361875 
+Q 212.04 51.361875 215.123573 51.361875 
+" clip-path="url(#pcb0221035e)" style="fill: none; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 212.323573 49.961875 
+L 215.123573 51.361875 
+L 212.323573 52.761875 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 282.942 51.361875 
+Q 286.92 51.361875 290.003573 51.361875 
+" clip-path="url(#pcb0221035e)" style="fill: none; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 287.203573 49.961875 
+L 290.003573 51.361875 
+L 287.203573 52.761875 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 357.822 51.361875 
+Q 361.8 51.361875 364.883573 51.361875 
+" clip-path="url(#pcb0221035e)" style="fill: none; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 362.083573 49.961875 
+L 364.883573 51.361875 
+L 362.083573 52.761875 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 365.778 131.236875 
+Q 361.8 131.236875 358.716427 131.236875 
+" clip-path="url(#pcb0221035e)" style="fill: none; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 361.516427 132.636875 
+L 358.716427 131.236875 
+L 361.516427 129.836875 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 290.898 131.236875 
+Q 286.92 131.236875 283.836427 131.236875 
+" clip-path="url(#pcb0221035e)" style="fill: none; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 286.636427 132.636875 
+L 283.836427 131.236875 
+L 286.636427 129.836875 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 216.018 131.236875 
+Q 212.04 131.236875 208.956427 131.236875 
+" clip-path="url(#pcb0221035e)" style="fill: none; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 211.756427 132.636875 
+L 208.956427 131.236875 
+L 211.756427 129.836875 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 145.818 131.236875 
+Q 141.84 131.236875 138.756427 131.236875 
+" clip-path="url(#pcb0221035e)" style="fill: none; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 141.556427 132.636875 
+L 138.756427 131.236875 
+L 141.556427 129.836875 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 70.938 131.236875 
+Q 66.96 131.236875 63.876427 131.236875 
+" clip-path="url(#pcb0221035e)" style="fill: none; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 66.676427 132.636875 
+L 63.876427 131.236875 
+L 66.676427 129.836875 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 403.92 71.026927 
+Q 403.92 91.299375 403.92 111.571823 
+" clip-path="url(#pcb0221035e)" style="fill: none; stroke-dasharray: 1.6,1.6; stroke-dashoffset: 0; stroke: #6e6e6e; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 402.72 73.426927 
+L 403.92 71.026927 
+L 405.12 73.426927 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #6e6e6e; stroke-dasharray: 1.6,1.6; stroke-dashoffset: 0; stroke: #6e6e6e; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 405.12 109.171823 
+L 403.92 111.571823 
+L 402.72 109.171823 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #6e6e6e; stroke-dasharray: 1.6,1.6; stroke-dashoffset: 0; stroke: #6e6e6e; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-style: italic; font-size: 6.8px; font-family: 'Arial', 'Microsoft YaHei'; text-anchor: start; fill: #6e6e6e" x="6.12" y="19.0125" transform="rotate(-0 6.12 19.0125)">发送链</text>
+   </g>
+   <g id="text_2">
+    <text style="font-style: italic; font-size: 6.8px; font-family: 'Arial', 'Microsoft YaHei'; text-anchor: start; fill: #6e6e6e" x="6.12" y="98.8875" transform="rotate(-0 6.12 98.8875)">接收链</text>
+   </g>
+   <g id="patch_14">
+    <path d="M 9.7704 69.413625 
+L 58.6296 69.413625 
+Q 62.3736 69.413625 62.3736 66.218625 
+L 62.3736 36.505125 
+Q 62.3736 33.310125 58.6296 33.310125 
+L 9.7704 33.310125 
+Q 6.0264 33.310125 6.0264 36.505125 
+L 6.0264 66.218625 
+Q 6.0264 69.413625 9.7704 69.413625 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #ffffff; stroke: #6e6e6e; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 75.2904 69.413625 
+L 133.5096 69.413625 
+Q 137.2536 69.413625 137.2536 66.218625 
+L 137.2536 36.505125 
+Q 137.2536 33.310125 133.5096 33.310125 
+L 75.2904 33.310125 
+Q 71.5464 33.310125 71.5464 36.505125 
+L 71.5464 66.218625 
+Q 71.5464 69.413625 75.2904 69.413625 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #f3e3de; stroke: #b5533c; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 150.1704 69.413625 
+L 203.7096 69.413625 
+Q 207.4536 69.413625 207.4536 66.218625 
+L 207.4536 36.505125 
+Q 207.4536 33.310125 203.7096 33.310125 
+L 150.1704 33.310125 
+Q 146.4264 33.310125 146.4264 36.505125 
+L 146.4264 66.218625 
+Q 146.4264 69.413625 150.1704 69.413625 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #dce6ef; stroke: #2f5c8a; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 220.3704 69.413625 
+L 278.5896 69.413625 
+Q 282.3336 69.413625 282.3336 66.218625 
+L 282.3336 36.505125 
+Q 282.3336 33.310125 278.5896 33.310125 
+L 220.3704 33.310125 
+Q 216.6264 33.310125 216.6264 36.505125 
+L 216.6264 66.218625 
+Q 216.6264 69.413625 220.3704 69.413625 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #dce6ef; stroke: #2f5c8a; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 295.2504 69.413625 
+L 353.4696 69.413625 
+Q 357.2136 69.413625 357.2136 66.218625 
+L 357.2136 36.505125 
+Q 357.2136 33.310125 353.4696 33.310125 
+L 295.2504 33.310125 
+Q 291.5064 33.310125 291.5064 36.505125 
+L 291.5064 66.218625 
+Q 291.5064 69.413625 295.2504 69.413625 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #dce6ef; stroke: #5b8db8; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 370.1304 69.413625 
+L 437.7096 69.413625 
+Q 441.4536 69.413625 441.4536 66.218625 
+L 441.4536 36.505125 
+Q 441.4536 33.310125 437.7096 33.310125 
+L 370.1304 33.310125 
+Q 366.3864 33.310125 366.3864 36.505125 
+L 366.3864 66.218625 
+Q 366.3864 69.413625 370.1304 69.413625 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #f3e3de; stroke: #b5533c; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 370.1304 149.288625 
+L 437.7096 149.288625 
+Q 441.4536 149.288625 441.4536 146.093625 
+L 441.4536 116.380125 
+Q 441.4536 113.185125 437.7096 113.185125 
+L 370.1304 113.185125 
+Q 366.3864 113.185125 366.3864 116.380125 
+L 366.3864 146.093625 
+Q 366.3864 149.288625 370.1304 149.288625 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #f3e3de; stroke: #b5533c; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 295.2504 149.288625 
+L 353.4696 149.288625 
+Q 357.2136 149.288625 357.2136 146.093625 
+L 357.2136 116.380125 
+Q 357.2136 113.185125 353.4696 113.185125 
+L 295.2504 113.185125 
+Q 291.5064 113.185125 291.5064 116.380125 
+L 291.5064 146.093625 
+Q 291.5064 149.288625 295.2504 149.288625 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #dce6ef; stroke: #5b8db8; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 220.3704 149.288625 
+L 278.5896 149.288625 
+Q 282.3336 149.288625 282.3336 146.093625 
+L 282.3336 116.380125 
+Q 282.3336 113.185125 278.5896 113.185125 
+L 220.3704 113.185125 
+Q 216.6264 113.185125 216.6264 116.380125 
+L 216.6264 146.093625 
+Q 216.6264 149.288625 220.3704 149.288625 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #dce6ef; stroke: #2f5c8a; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 150.1704 149.288625 
+L 203.7096 149.288625 
+Q 207.4536 149.288625 207.4536 146.093625 
+L 207.4536 116.380125 
+Q 207.4536 113.185125 203.7096 113.185125 
+L 150.1704 113.185125 
+Q 146.4264 113.185125 146.4264 116.380125 
+L 146.4264 146.093625 
+Q 146.4264 149.288625 150.1704 149.288625 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #dce6ef; stroke: #2f5c8a; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 75.2904 149.288625 
+L 133.5096 149.288625 
+Q 137.2536 149.288625 137.2536 146.093625 
+L 137.2536 116.380125 
+Q 137.2536 113.185125 133.5096 113.185125 
+L 75.2904 113.185125 
+Q 71.5464 113.185125 71.5464 116.380125 
+L 71.5464 146.093625 
+Q 71.5464 149.288625 75.2904 149.288625 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #f3e3de; stroke: #b5533c; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 9.7704 149.288625 
+L 58.6296 149.288625 
+Q 62.3736 149.288625 62.3736 146.093625 
+L 62.3736 116.380125 
+Q 62.3736 113.185125 58.6296 113.185125 
+L 9.7704 113.185125 
+Q 6.0264 113.185125 6.0264 116.380125 
+L 6.0264 146.093625 
+Q 6.0264 149.288625 9.7704 149.288625 
+z
+" clip-path="url(#pcb0221035e)" style="fill: #ffffff; stroke: #6e6e6e; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 5.8px; font-family: 'Arial', 'Microsoft YaHei'; text-anchor: start; fill: #6e6e6e" x="409.536" y="95.516791" transform="rotate(-0 409.536 95.516791)">空口</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 7px; font-family: 'Arial', 'Microsoft YaHei'; text-anchor: start; fill: #b5533c" x="15.48" y="179.56125" transform="rotate(-0 15.48 179.56125)">分帧元数据的位置决定了失效模式</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 6.2px; font-family: 'Arial', 'Microsoft YaHei'; text-anchor: start; fill: #1a1a1a" x="15.48" y="197.495123" transform="rotate(-0 15.48 197.495123)">有外码：2 字节长度前缀位于 RS 码字内部，受 t 字节纠错保护 → 载荷边界正确。</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 6.2px; font-family: 'Arial', 'Microsoft YaHei'; text-anchor: start; fill: #1a1a1a" x="15.48" y="215.482014" transform="rotate(-0 15.48 215.482014)">无外码：前缀裸露，单比特错误即破坏长度字段 → 接收端按错误长度切分 → 整条字节流错位。</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 6.2px; font-family: 'Arial', 'Microsoft YaHei'; text-anchor: start; fill: #6e6e6e" x="15.48" y="234.231326" transform="rotate(-0 15.48 234.231326)">因此外码的作用不止于纠错：它同时是分帧完整性的保护层（研究内容 1 的分帧子问题）。</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; text-anchor: middle; fill: #1a1a1a" x="34.2" y="53.617875" transform="rotate(-0 34.2 53.617875)">UDP 载荷</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; fill: #1a1a1a" transform="translate(91.6 49.3855)">长度前缀</text>
+    <text style="font-weight: 700; font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; fill: #1a1a1a" transform="translate(95.242 57.81275)">+ 载荷</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; fill: #1a1a1a" transform="translate(162.0015 48.8135)">RS(255,K)</text>
+    <text style="font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; fill: #1a1a1a" transform="translate(170.54 57.79475)">外码</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; fill: #1a1a1a" transform="translate(225.4675 48.8135)">LDPC(1008,504)</text>
+    <text style="font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; fill: #1a1a1a" transform="translate(243.08 57.80375)">内码</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; fill: #1a1a1a" transform="translate(308.7165 49.401)">交织 · 加扰</text>
+    <text style="font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; fill: #1a1a1a" transform="translate(308.1785 57.81625)">QPSK 映射</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; fill: #1a1a1a" transform="translate(387.211 49.37)">OFDM 调制</text>
+    <text style="font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; fill: #1a1a1a" transform="translate(393.431 57.96025)">→ 空口</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; fill: #1a1a1a" transform="translate(382.053 129.27)">同步 / 信道估计</text>
+    <text style="font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; fill: #1a1a1a" transform="translate(391.12 137.69125)">软解映射</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; text-anchor: middle; fill: #1a1a1a" x="324.36" y="133.480375" transform="rotate(-0 324.36 133.480375)">解交织 · 解扰</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; text-anchor: middle; fill: #1a1a1a" x="249.48" y="133.408875" transform="rotate(-0 249.48 133.408875)">LDPC 译码</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; text-anchor: middle; fill: #1a1a1a" x="176.94" y="133.408875" transform="rotate(-0 176.94 133.408875)">RS 译码</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; fill: #1a1a1a" transform="translate(88.4 129.2825)">依前缀截取</text>
+    <text style="font-weight: 700; font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; fill: #1a1a1a" transform="translate(91.6 137.67225)">还原载荷</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 6.4px; font-family: 'Arial', 'Microsoft YaHei'; text-anchor: middle; fill: #1a1a1a" x="34.2" y="133.436875" transform="rotate(-0 34.2 133.436875)">重建视频</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pcb0221035e">
+   <rect x="1.44" y="1.44" width="468" height="255.6"/>
+  </clipPath>
+ </defs>
+</svg>
